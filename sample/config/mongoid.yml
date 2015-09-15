@@ -1,0 +1,12 @@
+development:
+  sessions:
+    default:
+      database: phone_number_check_mod_dev
+      hosts:
+        - localhost:27017
+test:
+  sessions:
+    default:
+      database: phone_number_check_mod_test
+      hosts:
+        - localhost:27017

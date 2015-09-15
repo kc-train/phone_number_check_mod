@@ -1,0 +1,14 @@
+.phone-number-check-mod-page
+  .return_message
+  .form-send-validation-request
+    = text_field_tag 'phone_num','', :placeholder => '输入手机号码'
+    %a.send-code-btn{class:"btn btn-default" ,herf:"#" ,role:"button"}发送验证码
+  .form-check-validation
+    = form_tag(check_validation_messages_path) do
+      .hidden-phone-num
+        = text_field_tag 'phone_num'
+      .validation-confirm
+        %p
+          = notice
+        = text_field_tag 'validation', '', :placeholder => '输入验证码'
+        = submit_tag '提交',:class=>"btn btn-default"
