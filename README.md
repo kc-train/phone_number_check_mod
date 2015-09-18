@@ -7,7 +7,9 @@ TODO: Write a gem description
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'phone_number_check_mod'
+gem 'phone_number_check_mod', 
+  :github => 'mindpin/play_auth',
+  :tag => :latest
 ```
 
 And then execute:
