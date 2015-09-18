@@ -1,0 +1,23 @@
+.phone-number-check-mod-page{
+position: absolute;
+left :100px;
+top:200px;
+width: 600px;
+height:500px;
+padding: 100px
+}
+.return-message{
+  line-height: 30px
+}
+.send-code-btn{
+  width:120px
+}
+.submit-btn{
+  width: 400px
+}
+.notice{
+  padding-left: 0;
+  height: 14px;
+  margin-bottom: 5px;
+
+}

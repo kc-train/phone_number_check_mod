@@ -11,12 +11,17 @@ module PhoneNumberCheckMod
 
     def create
       phone_num = params[:message][:phone_num]
+      # 调用gem 方式一：传入手机号码
       post = PhoneMessageValid.new(phone_num)
+
+# 
       valid_info = post.valid
       if valid_info.success?
         Message.create(:phone_num=> valid_info.phone_num ,:valid_code => valid_info.valid_code)
       end
       render :status => 200, :text => '发送成功'
+# 
+
     end
 
     def check_validation

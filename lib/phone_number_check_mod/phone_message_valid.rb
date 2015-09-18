@@ -1,10 +1,24 @@
 module PhoneNumberCheckMod
   class PhoneMessageValid
+    class << self
+      def set_accountsid(str)
+        @@accountsid = str
+      end
+
+      def set_authtoken(str)
+        @@authtoken  = str
+      end
+
+      def set_base_url(str)
+        @@base_url = str
+      end
+    end
+
     def initialize(phone_num)
       @phone_num = phone_num
-      @accountsid = '8a48b5514fac9535014fb0225e2a0679'
-      @authtoken = '550c13b92ef3404f85474f2ca984aef1'
-      @base_url = 'https://sandboxapp.cloopen.com:8883'
+      @accountsid = @@accountsid
+      @authtoken = @@authtoken
+      @base_url = @@base_url
       @date = Time.now.strftime("%Y%m%d%H%M%S")
       @valid_code = rand(999999)
     end

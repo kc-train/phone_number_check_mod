@@ -10,4 +10,10 @@
     = javascript_include_tag 'phone_number_check_mod/application'
 
   %body
-    = yield
+    .nav{class:'navbar navbar-inverse navbar-fixed-top'}
+      .navbar-header
+        %a.navbar-brand{href:"/messages/new"}验证
+        %a.navbar-brand{href:"javascript:;"}link2
+        %a.navbar-brand{href:"javascript:;"}link3
+    .container
+      = yield
