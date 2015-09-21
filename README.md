@@ -83,12 +83,12 @@ logic
   #响应示例
 response
   #if success
-   {"post_result":"success"}
+   {post_result:"success"}
   #if failure
-   {"post_result":"failed"}
+   {post_result:"failed"}
  }  
 ```
-验证验证码
+验证验证码:
 ```
 url
  /messages/check_validation
