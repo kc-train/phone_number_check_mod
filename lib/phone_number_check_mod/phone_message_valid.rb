@@ -69,7 +69,7 @@ module PhoneNumberCheckMod
     end
 
     class ValidInfo
-      attr_reader :phone_num, :valid_code, :response_json
+      attr_reader :phone_num, :valid_code, :response_json,:status_code
       def initialize(options)
         @phone_num = options[:phone_num]
         @valid_code = options[:valid_code]

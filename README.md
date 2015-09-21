@@ -68,7 +68,7 @@ end
 ```
 
 ## 使用方法  
-这个gem提供了两种rest api接口。
+这个gem提供了两种rest api接口。   
 发送验证码：
 ```
 url
@@ -83,17 +83,15 @@ logic
   #响应示例
 response
   #if success
-    { statusCode : "000000" 
-      templateSMS: {"dateCreated":"20150921154619","smsMessageSid":"20150921154619222986"}}  
+   {"post_result":"success"}
   #if failure
-    { statusCode : "000000" 
-      statusMsg:"【短信】应用未上线，模板短信接收号码外呼受限","statusCode":"112310"}
+   {"post_result":"failed"}
  }  
 ```
 验证验证码
 ```
 url
-  /:engline_prefix/messages/check_validation
+ /messages/check_validation
 method
   post
 params
