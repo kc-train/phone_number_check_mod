@@ -19,16 +19,18 @@ module PhoneNumberCheckMod
       # 使用步骤 三：如果请求成功，则通过返回信息生成可查询的验证表
         Message.create(:phone_num=> valid_info.phone_num ,:valid_code => valid_info.valid_code)
       end
-      render :status => 200, :text => '发送成功'
-
+      # render 一个json
+      render :status => 200,  :json => valid_info.response_json
     end
 
     def check_validation
+      p params[:phone_num].class
+      p params[:valid_code].class
       # 使用步骤 四：可以得到用户的输入并且比对再进行处理
-      if Message.where(:phone_num=>params[:phone_num], :valid_code => params[:validation]).empty?
-        redirect_to "/messages/new", notice: '验证失败'
+      if  PhoneNumberCheckMod::Message.where(:phone_num=>params[:phone_num],:valid_code => params[:valid_code]).blank?
+        render :status => 200,  :json =>{:validation_result=>'incorrect'}.to_json
       else
-        render 'check_validation'
+        render :status => 200,  :json =>{:validation_result=>'correct'}.to_json
       end
     end
   end

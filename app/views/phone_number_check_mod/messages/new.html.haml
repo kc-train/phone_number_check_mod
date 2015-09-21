@@ -1,19 +1,20 @@
 .phone-number-check-mod-page.bg-info
-  = form_tag(check_validation_messages_path) do
-    .row
-      .col-md-12.form-send-validation-request
-        = text_field_tag 'valid_phone_num','', :placeholder => '输入手机号码',:class=>"form-control"
-    .row.form-check-validation
-      .col-md-12.hidden-phone-num
-        = hidden_field_tag 'phone_num'
-    .row
-      .col-sm-12.return_message.notice
-    .row.validation-confirm
-      .col-md-7
-        = text_field_tag 'validation', '', :placeholder => '输入验证码',:class=>"form-control"
-      .col-md-5
-        %a.send-code-btn.btn.btn-primary{herf:"javascript:;" ,role:"button"}发送验证码
-      .col-md-12.notice
-        %p= notice
-      .col-md-12
-        = submit_tag '提交',:class=>"btn btn-primary submit-btn "
+  / = form_tag(check_validation_messages_path) do
+  .row
+    .col-md-12.form-send-validation-request
+      = text_field_tag 'valid_phone_num','', :placeholder => '输入手机号码',:class=>"form-control"
+  .row.form-check-validation
+    .col-md-12.hidden-phone-num
+      = hidden_field_tag 'phone_num'
+  .row
+    .col-sm-12.return_message.notice
+  .row.validation-confirm
+    .col-md-7
+      = text_field_tag 'validation', '', :placeholder => '输入验证码',:class=>"form-control validation_input"
+    .col-md-5
+      %a.send-code-btn.btn.btn-primary{herf:"javascript:;" ,role:"button"}发送验证码
+    .col-md-12.notice
+      / %p= notice
+    .col-md-12
+      / = submit_tag '提交',:class=>"btn btn-primary submit-btn "
+      %a.submit-btn.btn.btn-primary{herf:"javascript:;" ,role:"button"}验证

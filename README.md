@@ -9,7 +9,7 @@ Add this line to your application's Gemfile:
 ```ruby
 gem 'phone_number_check_mod', 
   :github => 'mindpin/play_auth',
-  :tag => :latest
+  :tag => 0.0.1
 ```
 
 And then execute:
@@ -45,10 +45,18 @@ account: "8a48b5514fac9535014fb0225e2a0679"
 token: "550c13b92ef3404f85474f2ca984aef1"
 base_url: "https://sandboxapp.cloopen.com:8883"
 ```
-
-这里 account和token代表容联云通讯短信平台开发者的账号和口令。
+[容联云通讯平台](http://www.yuntongxun.com/)
+ymal里的 account和token代表容联云通讯短信平台开发者的账号和口令。
 base_url 用在对短信平台发请求时候所请求的目标url，文档里使用的是开发模式下的沙箱url，正式上线后要使用其他的url，
-可以到http://www.yuntongxun.com/注册账号再查询。
+点击链接后注册平台账号，进入'控制台首页'可以看到开发者主账号信息，例如我的是：  
+ACCOUNT SID：
+8a48b5514fac9535014fb0225e2a0679
+AUTH TOKEN：
+550c13b92ef3404f85474f2ca984aef1  
+(开发) Rest URL：
+https://sandboxapp.cloopen.com:8883
+(生产) Rest URL：
+https://app.cloopen.com:8883
 
 ## 如何使用
 ###### 使用步骤 一：传入手机号码。
@@ -63,7 +71,7 @@ valid_info = post.valid
 ```
 ######  使用步骤 三：可以得到用户的输入并且比对再进行处理。
 ```ruby
-  if Message.where(:phone_num=>params[:phone_num], :valid_code => params[:validation]).empty?
+  if PhoneNumberCheckMod::Message.where(:phone_num=>params[:phone_num],:valid_code => params[:valid_code]).blank?
 ```
 ## Contributing
 
