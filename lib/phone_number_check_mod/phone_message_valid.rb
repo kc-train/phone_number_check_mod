@@ -12,6 +12,10 @@ module PhoneNumberCheckMod
       def set_base_url(str)
         @@base_url = str
       end
+
+      def set_app_id(id)
+        @@app_id = id
+      end
     end
 
     def initialize(phone_num)
@@ -19,6 +23,7 @@ module PhoneNumberCheckMod
       @accountsid = @@accountsid
       @authtoken = @@authtoken
       @base_url = @@base_url
+      @app_id = @@app_id
       @date = Time.now.strftime("%Y%m%d%H%M%S")
       @valid_code = rand(999999)
     end
@@ -31,7 +36,6 @@ module PhoneNumberCheckMod
       req = Net::HTTP::Post.new(request_uri,initheader = _build_headers)
       req.body = _build_body
       body = https.request(req).body
-
       ValidInfo.new(
         :phone_num   => @phone_num,
         :valid_code  => @valid_code,
@@ -41,6 +45,7 @@ module PhoneNumberCheckMod
 
     def _build_request_url
       before_encrypted_code = "#{@accountsid}#{@authtoken}#{@date}"
+      p before_encrypted_code
       sig_parameter = Digest::MD5.hexdigest(before_encrypted_code).upcase
       File.join(@base_url, "/2013-12-26/Accounts/#{@accountsid}/SMS/TemplateSMS?sig=#{sig_parameter}")
     end
@@ -57,7 +62,7 @@ module PhoneNumberCheckMod
     def _build_body
       return {
         'to'=> @phone_num,
-        'appId'=>'8a48b5514fac9535014fb0229bdd067b',
+        'appId'=>@app_id,
         'templateId'=>'1',
         'datas'=>[@valid_code,"1"]
        }.to_json

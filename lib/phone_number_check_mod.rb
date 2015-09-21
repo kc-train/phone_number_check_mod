@@ -7,6 +7,9 @@ module PhoneNumberCheckMod
     def set_base_url(url)
       PhoneNumberCheckMod::PhoneMessageValid.set_base_url(url)
     end
+    def set_app_id(id)
+      PhoneNumberCheckMod::PhoneMessageValid.set_app_id(id)
+    end
   end
 end
 require 'phone_number_check_mod/engine'
