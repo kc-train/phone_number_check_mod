@@ -57,19 +57,12 @@ https://sandboxapp.cloopen.com:8883
 (生产) Rest URL：   
 https://app.cloopen.com:8883  
 在用户的管理界面可以增加应用和短信模板，它们都有对应的id。
-使用者根据自己开发的情况修改application.yml文件里的各种配置属性。
-## 如何使用
-###### 使用步骤 一：传入手机号码。
-```ruby
-post = PhoneMessageValid.new(phone_num) 
+使用者根据自己开发的情况修改application.yml文件里的各种配置属性。  
+  
+../config/routes.rb
 ```
-######  使用步骤 二：从新建立的实例里能取得实例方法 success？ 和valids 返回 1请求是否成功 2请求返回信息（json转字符串），如果请求成功，则通过返回信息生成可查询的验证表。
-```ruby
-valid_info = post.valid
-  if valid_info.success?
-    Message.create(:phone_num=> valid_info.phone_num ,:valid_code => valid_info.valid_code)
-```
-######  使用步骤 三：可以得到用户的输入并且比对再进行处理。
-```ruby
-  if PhoneNumberCheckMod::Message.where(:phone_num=>params[:phone_num],:valid_code => params[:valid_code]).blank?
+Rails.application.routes.draw do
+  mount PhoneNumberCheckMod::Engine => '/', :as => 'phone_number_check_mod'
+  mount PlayAuth::Engine => '/auth', :as => :auth
+end
 ```
