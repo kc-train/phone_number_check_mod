@@ -66,3 +66,45 @@ Rails.application.routes.draw do
   mount PhoneNumberCheckMod::Engine => '/', :as => 'phone_number_check_mod'
 end
 ```
+
+## 使用方法  
+这个gem提供了两种rest api接口。
+发送验证码：
+```
+url
+  /messages
+method
+  post
+params
+  phone_num # 手机号
+logic
+  产生一个验证码，并会在接下来的几十秒内发送验证码到 phone_num 这个手机
+
+  #响应示例
+response
+  #if success
+    { statusCode : "000000" 
+      templateSMS: {"dateCreated":"20150921154619","smsMessageSid":"20150921154619222986"}}  
+  #if failure
+    { statusCode : "000000" 
+      statusMsg:"【短信】应用未上线，模板短信接收号码外呼受限","statusCode":"112310"}
+ }  
+```
+验证验证码
+```
+url
+  /:engline_prefix/messages/check_validation
+method
+  post
+params
+  phone_num  # 手机号
+  valid_code # 验证码
+logic
+  根据接收到的手机号和验证码，检查验证码是否正确
+  #响应示例
+response
+  #if 正确
+    { validation_reult : "correct" }  
+  #if 错误
+    { validation_reult : "incorrect" }  
+```
