@@ -1,0 +1,19 @@
+!!!
+%html{:lang => :zh}
+  %head
+    %meta{:'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %meta{:name => 'viewport', :content => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'}
+
+    %title rails engine: phone_number_check_mod
+    = csrf_meta_tags
+    = stylesheet_link_tag 'phone_number_check_mod/application', :media => 'screen'
+    = javascript_include_tag 'phone_number_check_mod/application'
+
+  %body
+    .nav{class:'navbar navbar-inverse navbar-fixed-top'}
+      .navbar-header
+        %a.navbar-brand{href:"/messages/new"}验证
+        %a.navbar-brand{href:"javascript:;"}link2
+        %a.navbar-brand{href:"javascript:;"}link3
+    .container
+      = yield
