@@ -58,11 +58,11 @@ https://sandboxapp.cloopen.com:8883
 https://app.cloopen.com:8883  
 在用户的管理界面可以增加应用和短信模板，它们都有对应的id。
 使用者根据自己开发的情况修改application.yml文件里的各种配置属性。  
-  
+
+
 ../config/routes.rb
 ```
 Rails.application.routes.draw do
   mount PhoneNumberCheckMod::Engine => '/', :as => 'phone_number_check_mod'
-  mount PlayAuth::Engine => '/auth', :as => :auth
 end
 ```
